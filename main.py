@@ -4,6 +4,7 @@ from openai import OpenAI
 
 app = FastAPI()
 
+
 @app.get("/getBooks", status_code=status.HTTP_200_OK)
 def root():
     return {
@@ -48,7 +49,7 @@ def send_book(series: str, level: str, name: str):
             return {
                 "success": False,
                 "message": "API key not found",
-                "error_code": "API_KEY_MISSING"
+                "error_code": "API_KEY_MISSING",
             }, status.HTTP_400_BAD_REQUEST
 
         # 创建OpenAI客户端
@@ -71,17 +72,12 @@ def send_book(series: str, level: str, name: str):
         content = response.choices[0].message.content
         print(content)
         # 返回成功响应
-        return {
-            "success": True,
-            "data": {
-                "message": content
-            }
-        }
+        return {"success": True, "message": content}
 
     except Exception as e:
         # 捕获所有异常并返回错误响应
         return {
             "success": False,
             "message": str(e),
-            "error_code": "SERVER_ERROR"
+            "error_code": "SERVER_ERROR",
         }, status.HTTP_500_INTERNAL_SERVER_ERROR
