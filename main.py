@@ -69,7 +69,7 @@ def send_book(series: str, level: str, name: str):
 
         # 提取结果
         content = response.choices[0].message.content
-
+        print(content)
         # 返回成功响应
         return {
             "success": True,
