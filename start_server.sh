@@ -5,5 +5,8 @@ uvicorn main:app --host 0.0.0.0 --port 8080
 
 uvicorn main:app --host 0.0.0.0 --port 443 --ssl-keyfile /etc/ssl/private/server.key --ssl-certfile /etc/ssl/certs/server.crt
 
+nohup uvicorn main:app --host 0.0.0.0 --port 443 --ssl-keyfile /etc/ssl/private/server.key --ssl-certfile /etc/ssl/certs/server.crt &
+
+
 # 可选：如果需要在服务器停止后保持终端窗口打开，可以取消下面一行的注释
 # read -p "按 Enter 键继续..."
